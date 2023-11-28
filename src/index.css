@@ -1,0 +1,9 @@
+body {
+  background-color: powderblue;
+}
+
+#quote-box {
+  background-color: white;
+  width: 300px;
+  margin: 0 auto;
+}
