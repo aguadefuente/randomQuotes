@@ -1,3 +1,14 @@
+import {
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  IconButton,
+  Typography,
+} from "@mui/material";
+import TwitterIcon from "@mui/icons-material/Twitter";
+
+//import Button from "@mui/material/Button"; //o así, funcionaría más rápido
 import { useEffect, useState } from "react";
 
 function App() {
@@ -22,35 +33,70 @@ function App() {
   }, []);
 
   function handleQuote() {
-    setIndex(Math.floor(Math.random() * quoteList.length));
+    quoteList && setIndex(Math.floor(Math.random() * quoteList.length));
     console.log(index);
   }
 
   return (
     <>
-      <div id="quote-box">
+      <Typography
+        variant="h3"
+        component="header"
+        gutterBottom="true"
+        sx={{ borderBottom: 1 }}
+      >
+        Random Quotes
+      </Typography>
+      <Card id="quote-box" sx={{ maxWidth: 345 }}>
         {quoteList && (
           <>
-            <h3 id="text">{quoteList[index].text}</h3>
-            <p id="author">{quoteList[index].author}</p>
+            <CardContent sx={{ textAlign: "center" }}>
+              <Typography gutterBottom variant="h5" component="div" id="text">
+                {quoteList[index].text}
+              </Typography>
+              <Typography variant="body2" id="author">
+                {quoteList[index].author}
+              </Typography>
+            </CardContent>
+
+            <CardActions sx={{ justifyContent: "flex-end" }}>
+              <IconButton
+                title="Tweet this quote"
+                size="small"
+                color="primary"
+                href={`https://twitter.com/intent/tweet?text=${
+                  quoteList[index].text + " - " + quoteList[index].author
+                }`}
+                target="_blank"
+                id="tweet-quote"
+              >
+                <TwitterIcon></TwitterIcon>
+              </IconButton>
+
+              <Button
+                id="new-quote"
+                variant="contained"
+                size="small"
+                sx={{ margin: 2 }}
+                onClick={handleQuote}
+              >
+                New Quote
+              </Button>
+            </CardActions>
           </>
         )}
-
-        <button id="new-quote" onClick={handleQuote}>
-          New Quote
-        </button>
-        <a
-          title="Tweet this quote"
-          href={`https://twitter.com/intent/tweet?text=${
-            quoteList[index].text + " - " + quoteList[index].author
-          }`}
-          target="_blank"
-          id="tweet-quote"
-        >
-          Twitter
-        </a>
-      </div>
-      <footer>React Quote Machine 🌬️ Aural 2023 </footer>
+      </Card>
+      <Typography
+        variant="body2"
+        sx={{
+          color: "text.secondary",
+          marginTop: 2,
+          textAlign: "center",
+        }}
+        component="footer"
+      >
+        React Quote Machine 🌬️ Aural 2023
+      </Typography>
     </>
   );
 }
@@ -58,3 +104,7 @@ function App() {
 export default App;
 
 //Falta: error y loading useState para agregar al fetch
+//Hacer que no se repitan las quotes cuando me haga el random
+//agregar un corazoncito para poner like or dislike y que eso sea un post/patch a la api
+
+//MATERIAL UI https://mui.com/material-ui/getting-started/installation/
