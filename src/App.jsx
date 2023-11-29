@@ -1,4 +1,5 @@
 import {
+  Box,
   Button,
   Card,
   CardActions,
@@ -38,7 +39,7 @@ function App() {
   }
 
   return (
-    <>
+    <Box>
       <Typography
         variant="h3"
         component="header"
@@ -89,7 +90,10 @@ function App() {
       <Typography
         variant="body2"
         sx={{
-          color: "text.secondary",
+          // color: "text.secondary",
+          color: "#350f4f",
+          // color: (theme) => theme.palette.common.black,
+          // color: "cyan.400",
           marginTop: 2,
           textAlign: "center",
         }}
@@ -97,7 +101,7 @@ function App() {
       >
         React Quote Machine 🌬️ Aural 2023
       </Typography>
-    </>
+    </Box>
   );
 }
 
