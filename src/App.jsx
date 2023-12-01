@@ -1,19 +1,14 @@
-import {
-  Box,
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  IconButton,
-  Typography,
-} from "@mui/material";
+import Quote from "./Quote";
+import { Typography, Grid } from "@mui/material";
+
 import TwitterIcon from "@mui/icons-material/Twitter";
 
 //import Button from "@mui/material/Button"; //o así, funcionaría más rápido
 import { useEffect, useState } from "react";
+import { Copyright } from "@mui/icons-material";
 
 function App() {
-  const [quoteList, setQuoteList] = useState(null);
+  const [fetchQuote, setfetchQuote] = useState(null);
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
@@ -26,7 +21,7 @@ function App() {
       })
       .then((data) => {
         console.log(data);
-        setQuoteList(data);
+        setfetchQuote(data);
       })
       .catch((err) => {
         console.log(err.message);
@@ -34,74 +29,43 @@ function App() {
   }, []);
 
   function handleQuote() {
-    quoteList && setIndex(Math.floor(Math.random() * quoteList.length));
-    console.log(index);
+    fetchQuote && setIndex(Math.floor(Math.random() * fetchQuote.length));
   }
 
   return (
-    <Box>
-      <Typography
-        variant="h3"
-        component="header"
-        gutterBottom="true"
-        sx={{ borderBottom: 1 }}
-      >
-        Random Quotes
-      </Typography>
-      <Card id="quote-box" sx={{ maxWidth: 345 }}>
-        {quoteList && (
-          <>
-            <CardContent sx={{ textAlign: "center" }}>
-              <Typography gutterBottom variant="h5" component="div" id="text">
-                {quoteList[index].text}
-              </Typography>
-              <Typography variant="body2" id="author">
-                {quoteList[index].author}
-              </Typography>
-            </CardContent>
+    <Grid
+      container
+      direction="column"
+      alignItems="center"
+      justifyContent="center"
+      sx={{ minHeight: "100vh" }}
+    >
+      <Grid item>
+        <Typography variant="h5" gutterBottom>
+          Random Quotes
+        </Typography>
+      </Grid>
 
-            <CardActions sx={{ justifyContent: "flex-end" }}>
-              <IconButton
-                title="Tweet this quote"
-                size="small"
-                color="primary"
-                href={`https://twitter.com/intent/tweet?text=${
-                  quoteList[index].text + " - " + quoteList[index].author
-                }`}
-                target="_blank"
-                id="tweet-quote"
-              >
-                <TwitterIcon></TwitterIcon>
-              </IconButton>
+      <Grid item>
+        <Quote fetch={fetchQuote} index={index} handleQ={handleQuote} />
+      </Grid>
 
-              <Button
-                id="new-quote"
-                variant="contained"
-                size="small"
-                sx={{ margin: 2 }}
-                onClick={handleQuote}
-              >
-                New Quote
-              </Button>
-            </CardActions>
-          </>
-        )}
-      </Card>
-      <Typography
-        variant="body2"
-        sx={{
-          // color: "text.secondary",
-          color: "#350f4f",
-          // color: (theme) => theme.palette.common.black,
-          // color: "cyan.400",
-          marginTop: 2,
-          textAlign: "center",
-        }}
-        component="footer"
-      >
-        React Quote Machine 🌬️ Aural 2023
-      </Typography>
-    </Box>
+      <Grid item>
+        <Typography
+          variant="body2"
+          sx={{
+            // color: "text.secondary",
+            color: "#350f4f",
+            // color: (theme) => theme.palette.common.black,
+            // color: "cyan.400",
+            marginTop: 2,
+            textAlign: "center",
+          }}
+        >
+          React Quote Machine <Copyright /> Aural 2023
+        </Typography>
+      </Grid>
+    </Grid>
   );
 }
 
