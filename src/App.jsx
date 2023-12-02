@@ -1,11 +1,10 @@
+import Appbar from "./Appbar";
 import Quote from "./Quote";
-import { Typography, Grid } from "@mui/material";
-
-import TwitterIcon from "@mui/icons-material/Twitter";
+import Copyright from "./Footer";
 
 //import Button from "@mui/material/Button"; //o así, funcionaría más rápido
 import { useEffect, useState } from "react";
-import { Copyright } from "@mui/icons-material";
+import { Container } from "@mui/material";
 
 function App() {
   const [fetchQuote, setfetchQuote] = useState(null);
@@ -33,39 +32,11 @@ function App() {
   }
 
   return (
-    <Grid
-      container
-      direction="column"
-      alignItems="center"
-      justifyContent="center"
-      sx={{ minHeight: "100vh" }}
-    >
-      <Grid item>
-        <Typography variant="h5" gutterBottom>
-          Random Quotes
-        </Typography>
-      </Grid>
-
-      <Grid item>
-        <Quote fetch={fetchQuote} index={index} handleQ={handleQuote} />
-      </Grid>
-
-      <Grid item>
-        <Typography
-          variant="body2"
-          sx={{
-            // color: "text.secondary",
-            color: "#350f4f",
-            // color: (theme) => theme.palette.common.black,
-            // color: "cyan.400",
-            marginTop: 2,
-            textAlign: "center",
-          }}
-        >
-          React Quote Machine <Copyright /> Aural 2023
-        </Typography>
-      </Grid>
-    </Grid>
+    <>
+      <Appbar />
+      <Quote fetch={fetchQuote} index={index} handleQ={handleQuote} />
+      <Copyright />
+    </>
   );
 }
 
