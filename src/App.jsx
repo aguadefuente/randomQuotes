@@ -1,4 +1,4 @@
-import Appbar from "./Appbar";
+import ResponsiveAppBar from "./Appbar";
 import Quote from "./Quote";
 import Copyright from "./Footer";
 
@@ -33,8 +33,10 @@ function App() {
 
   return (
     <>
-      <Appbar />
-      <Quote fetch={fetchQuote} index={index} handleQ={handleQuote} />
+      <ResponsiveAppBar />
+      <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
+        <Quote fetch={fetchQuote} index={index} handleQ={handleQuote} />
+      </Container>
       <Copyright />
     </>
   );
