@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   Button,
   Card,
@@ -12,6 +13,18 @@ import { XIcon } from "./XIcon";
 import FavoriteOutlinedIcon from "@mui/icons-material/FavoriteOutlined";
 
 const Quote = ({ fetch, index, handleQ }) => {
+  const [status, setStatus] = useState(false);
+  const [color, setColor] = useState("gray");
+
+  function handleFavourite() {
+    setStatus(!status);
+    if (status) {
+      setColor("red");
+    } else {
+      setColor("gray");
+    }
+  }
+
   return (
     <>
       <Grid
@@ -20,13 +33,13 @@ const Quote = ({ fetch, index, handleQ }) => {
         alignItems="center"
         justifyContent="center"
       >
-        <Card id="quote-box" sx={{ maxWidth: 345 }}>
+        <Card id="quote-box" elevation={3}>
           {fetch && (
             <>
               <CardContent sx={{ textAlign: "center" }}>
                 <Box sx={{ textAlign: "end", my: 2, mx: 2 }}>
-                  <IconButton>
-                    <FavoriteOutlinedIcon />
+                  <IconButton onClick={handleFavourite}>
+                    <FavoriteOutlinedIcon sx={{ color: { color } }} />
                   </IconButton>
                 </Box>
 
@@ -56,7 +69,7 @@ const Quote = ({ fetch, index, handleQ }) => {
                   target="_blank"
                   id="tweet-quote"
                 >
-                  <XIcon color="primary" />
+                  <XIcon />
                 </IconButton>
 
                 <Button
