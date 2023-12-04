@@ -1,8 +1,7 @@
-import ResponsiveAppBar from "./Appbar";
-import Quote from "./Quote";
-import Copyright from "./Footer";
+import ResponsiveAppBar from "./Appbar.jsx";
+import Quote from "./Quote.jsx";
+import Copyright from "./Footer.jsx";
 
-//import Button from "@mui/material/Button"; //o así, funcionaría más rápido
 import { useEffect, useState } from "react";
 import { Container } from "@mui/material";
 
@@ -34,7 +33,7 @@ function App() {
   return (
     <>
       <ResponsiveAppBar />
-      <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
+      <Container component="main" maxWidth="sm">
         <Quote fetch={fetchQuote} index={index} handleQ={handleQuote} />
       </Container>
       <Copyright />
@@ -43,9 +42,3 @@ function App() {
 }
 
 export default App;
-
-//Falta: error y loading useState para agregar al fetch
-//Hacer que no se repitan las quotes cuando me haga el random
-//agregar un corazoncito para poner like or dislike y que eso sea un post/patch a la api
-
-//MATERIAL UI https://mui.com/material-ui/getting-started/installation/

@@ -6,9 +6,10 @@ import {
   IconButton,
   Typography,
   Grid,
+  Box,
 } from "@mui/material";
-
-import TwitterIcon from "@mui/icons-material/Twitter";
+import { XIcon } from "./XIcon";
+import FavoriteOutlinedIcon from "@mui/icons-material/FavoriteOutlined";
 
 const Quote = ({ fetch, index, handleQ }) => {
   return (
@@ -23,12 +24,25 @@ const Quote = ({ fetch, index, handleQ }) => {
           {fetch && (
             <>
               <CardContent sx={{ textAlign: "center" }}>
-                <Typography gutterBottom variant="h5" component="div" id="text">
-                  {fetch[index].text}
-                </Typography>
-                <Typography variant="body2" id="author">
-                  {fetch[index].author}
-                </Typography>
+                <Box sx={{ textAlign: "end", my: 2, mx: 2 }}>
+                  <IconButton>
+                    <FavoriteOutlinedIcon />
+                  </IconButton>
+                </Box>
+
+                <Box>
+                  <Typography
+                    gutterBottom
+                    variant="h5"
+                    component="div"
+                    id="text"
+                  >
+                    {fetch[index].text}
+                  </Typography>
+                  <Typography variant="body2" id="author">
+                    {fetch[index].author}
+                  </Typography>
+                </Box>
               </CardContent>
 
               <CardActions sx={{ justifyContent: "flex-end" }}>
@@ -42,7 +56,7 @@ const Quote = ({ fetch, index, handleQ }) => {
                   target="_blank"
                   id="tweet-quote"
                 >
-                  <TwitterIcon></TwitterIcon>
+                  <XIcon color="primary" />
                 </IconButton>
 
                 <Button
