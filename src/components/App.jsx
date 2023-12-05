@@ -3,7 +3,6 @@ import Quote from "./Quote.jsx";
 import Copyright from "./Footer.jsx";
 
 import { useEffect, useState } from "react";
-import { Container } from "@mui/material";
 
 function App() {
   const [fetchQuote, setfetchQuote] = useState(null);
@@ -33,9 +32,7 @@ function App() {
   return (
     <>
       <ResponsiveAppBar />
-      <Container component="main" maxWidth="sm">
-        <Quote fetch={fetchQuote} index={index} handleQ={handleQuote} />
-      </Container>
+      <Quote fetch={fetchQuote} index={index} handleQ={handleQuote} />
       <Copyright />
     </>
   );

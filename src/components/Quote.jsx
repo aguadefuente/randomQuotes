@@ -1,4 +1,5 @@
-import { useState } from "react";
+import Liked from "./Liked.jsx";
+
 import {
   Button,
   Card,
@@ -10,21 +11,8 @@ import {
   Box,
 } from "@mui/material";
 import { XIcon } from "./XIcon";
-import FavoriteOutlinedIcon from "@mui/icons-material/FavoriteOutlined";
 
 const Quote = ({ fetch, index, handleQ }) => {
-  const [status, setStatus] = useState(false);
-  const [color, setColor] = useState("gray");
-
-  function handleFavourite() {
-    setStatus(!status);
-    if (status) {
-      setColor("red");
-    } else {
-      setColor("gray");
-    }
-  }
-
   return (
     <>
       <Grid
@@ -32,15 +20,14 @@ const Quote = ({ fetch, index, handleQ }) => {
         direction="column"
         alignItems="center"
         justifyContent="center"
+        sx={{ height: "100vh" }}
       >
         <Card id="quote-box" elevation={3}>
           {fetch && (
             <>
               <CardContent sx={{ textAlign: "center" }}>
                 <Box sx={{ textAlign: "end", my: 2, mx: 2 }}>
-                  <IconButton onClick={handleFavourite}>
-                    <FavoriteOutlinedIcon sx={{ color: { color } }} />
-                  </IconButton>
+                  <Liked key={index} data={fetch} />
                 </Box>
 
                 <Box>
@@ -52,6 +39,7 @@ const Quote = ({ fetch, index, handleQ }) => {
                   >
                     {fetch[index].text}
                   </Typography>
+
                   <Typography variant="body2" id="author">
                     {fetch[index].author}
                   </Typography>
