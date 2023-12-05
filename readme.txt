@@ -1,8 +1,13 @@
 //Falta: error y loading useState para agregar al fetch
 TAREAS PENDIENTES
 - Hacer que no se repitan las quotes cuando me haga el random
-- agregar un corazoncito para poner like or dislike y que eso sea un post/patch a la api
+- Cuando haya mostrado todas las quotes que me salga un cartel "esas fueron todas las quotes" y un botón "restart"
+- agregar un corazoncito para poner like or dislike y 
+-  usar LocalStorage() - estudiar como es - para agregarlas a la page Favourites
 - agregar los links router para el menu (home y favourites (aquí estén las quotes favoritas todas juntas como tarjetitas))
+- agregar carpeta pages para Home and Favourites
+- agregarle la fecha a la aplicación con el componente del MUI
+- Ver el tamaño de la Card mediaquery (breakpoints) - estudiar
 
 APUNTES:
 MATERIAL UI https://mui.com/material-ui/getting-started/installation/

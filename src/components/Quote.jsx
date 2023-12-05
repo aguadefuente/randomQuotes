@@ -22,7 +22,7 @@ const Quote = ({ fetch, index, handleQ }) => {
         justifyContent="center"
         sx={{ height: "100vh" }}
       >
-        <Card id="quote-box" elevation={3}>
+        <Card id="quote-box" elevation={3} sx={{ my: 10 }}>
           {fetch && (
             <>
               <CardContent sx={{ textAlign: "center" }}>
