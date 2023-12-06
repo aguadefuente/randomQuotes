@@ -20,14 +20,14 @@ const Quote = ({ fetch, index, handleQ }) => {
         direction="column"
         alignItems="center"
         justifyContent="center"
-        sx={{ height: "100vh" }}
       >
         <Card id="quote-box" elevation={3} sx={{ my: 10 }}>
           {fetch && (
             <>
               <CardContent sx={{ textAlign: "center" }}>
                 <Box sx={{ textAlign: "end", my: 2, mx: 2 }}>
-                  <Liked key={index} />
+                  {/*Liked iconButton */}
+                  <Liked key={index} id={index} data={fetch} />
                 </Box>
 
                 <Box>
@@ -57,6 +57,7 @@ const Quote = ({ fetch, index, handleQ }) => {
                   target="_blank"
                   id="tweet-quote"
                 >
+                  {/*Twitter IconButton */}
                   <XIcon />
                 </IconButton>
 
