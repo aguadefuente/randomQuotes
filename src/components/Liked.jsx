@@ -2,28 +2,31 @@ import { useState, useEffect } from "react";
 import { IconButton } from "@mui/material";
 import FavoriteOutlinedIcon from "@mui/icons-material/FavoriteOutlined";
 
-const Liked = ({ id, data }) => {
-  const [status, setStatus] = useState(false);
-  const [color, setColor] = useState("gray");
+const Liked = ({ id }) => {
+  const [allLiked, setAllLiked] = useState(
+    JSON.parse(localStorage.getItem("AllLiked")) || []
+  );
 
-  //Local Storage Liked quotes
-  const [items, setItems] = useState([]);
+  const isLiked = allLiked.includes(id);
+  let nextArr;
 
-  function handleFavourite() {
-    setStatus(!status);
-    if (status) {
-      setColor("red");
-      localStorage.setItem("liked", JSON.stringify(data[id]));
-      console.log(localStorage);
+  const handleFavourite = () => {
+    if (!isLiked) {
+      nextArr = allLiked.concat(id);
     } else {
-      setColor("gray");
+      nextArr = allLiked.filter((item) => item !== id);
     }
-  }
+
+    setAllLiked(nextArr);
+
+    localStorage.setItem("AllLiked", JSON.stringify(nextArr));
+    console.log(allLiked);
+  };
 
   return (
     <>
       <IconButton onClick={handleFavourite}>
-        <FavoriteOutlinedIcon sx={{ color: { color } }} />
+        <FavoriteOutlinedIcon sx={{ color: isLiked ? "red" : "gray" }} />
       </IconButton>
     </>
   );

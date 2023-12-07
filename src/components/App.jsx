@@ -1,8 +1,9 @@
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { useEffect, useState } from "react";
+
 import ResponsiveAppBar from "./Appbar.jsx";
 import Quote from "./Quote.jsx";
 import Copyright from "./Footer.jsx";
-
-import { useEffect, useState } from "react";
 import { Container } from "@mui/material";
 
 function App() {
@@ -32,11 +33,17 @@ function App() {
 
   return (
     <>
-      <ResponsiveAppBar />
-      <Container>
-        <Quote fetch={fetchQuote} index={index} handleQ={handleQuote} />
-      </Container>
-      <Copyright />
+      <Router>
+        <ResponsiveAppBar />
+        <Switch>
+          <Route exact path="/">
+            <Container>
+              <Quote fetch={fetchQuote} index={index} handleQ={handleQuote} />
+            </Container>
+          </Route>
+        </Switch>
+        <Copyright />
+      </Router>
     </>
   );
 }

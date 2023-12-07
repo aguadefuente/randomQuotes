@@ -27,7 +27,7 @@ const Quote = ({ fetch, index, handleQ }) => {
               <CardContent sx={{ textAlign: "center" }}>
                 <Box sx={{ textAlign: "end", my: 2, mx: 2 }}>
                   {/*Liked iconButton */}
-                  <Liked key={index} id={index} data={fetch} />
+                  <Liked key={index} id={index} />
                 </Box>
 
                 <Box>
