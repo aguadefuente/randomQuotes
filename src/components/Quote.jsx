@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 import { XIcon } from "./XIcon";
 
-const Quote = ({ fetch, index, handleQ }) => {
+const Quote = ({ data, index, handleQ }) => {
   return (
     <>
       <Grid
@@ -22,7 +22,7 @@ const Quote = ({ fetch, index, handleQ }) => {
         justifyContent="center"
       >
         <Card id="quote-box" elevation={3} sx={{ my: 10 }}>
-          {fetch && (
+          {data && (
             <>
               <CardContent sx={{ textAlign: "center" }}>
                 <Box sx={{ textAlign: "end", my: 2, mx: 2 }}>
@@ -37,11 +37,11 @@ const Quote = ({ fetch, index, handleQ }) => {
                     component="div"
                     id="text"
                   >
-                    {fetch[index].text}
+                    {data[index].text}
                   </Typography>
 
                   <Typography variant="body2" id="author">
-                    {fetch[index].author}
+                    {data[index].author}
                   </Typography>
                 </Box>
               </CardContent>
@@ -52,7 +52,7 @@ const Quote = ({ fetch, index, handleQ }) => {
                   size="small"
                   color="primary"
                   href={`https://twitter.com/intent/tweet?text=${
-                    fetch[index].text + " - " + fetch[index].author
+                    data[index].text + " - " + data[index].author
                   }`}
                   target="_blank"
                   id="tweet-quote"

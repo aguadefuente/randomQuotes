@@ -5,6 +5,7 @@ import ResponsiveAppBar from "./Appbar.jsx";
 import Quote from "./Quote.jsx";
 import Copyright from "./Footer.jsx";
 import { Container } from "@mui/material";
+import Favourite from "./Favourite.jsx";
 
 function App() {
   const [fetchQuote, setfetchQuote] = useState(null);
@@ -38,7 +39,13 @@ function App() {
         <Switch>
           <Route exact path="/">
             <Container>
-              <Quote fetch={fetchQuote} index={index} handleQ={handleQuote} />
+              <Quote data={fetchQuote} index={index} handleQ={handleQuote} />
+            </Container>
+          </Route>
+
+          <Route path="/favourite">
+            <Container>
+              <Favourite data={fetchQuote} />
             </Container>
           </Route>
         </Switch>
