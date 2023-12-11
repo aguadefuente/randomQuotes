@@ -9,6 +9,7 @@ import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
+import MuiLink from "@mui/material/Link";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
@@ -45,7 +46,7 @@ function ResponsiveAppBar() {
             variant="h6"
             noWrap
             component="a"
-            href="#app-bar-with-responsive-menu"
+            href="/"
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
@@ -89,14 +90,22 @@ function ResponsiveAppBar() {
               }}
             >
               <MenuItem onClick={handleCloseNavMenu}>
-                <Typography textAlign="center">
-                  <Link to="/">Home</Link>
-                </Typography>
+                <MuiLink
+                  component={Link}
+                  to="/"
+                  sx={{ textDecoration: "none" }}
+                >
+                  Home
+                </MuiLink>
               </MenuItem>
               <MenuItem onClick={handleCloseNavMenu}>
-                <Typography textAlign="center">
-                  <Link to="/favourite">Favourite</Link>
-                </Typography>
+                <MuiLink
+                  component={Link}
+                  to="/favourite"
+                  sx={{ textDecoration: "none" }}
+                >
+                  Favourite
+                </MuiLink>
               </MenuItem>
             </Menu>
           </Box>
@@ -104,8 +113,8 @@ function ResponsiveAppBar() {
           <Typography
             variant="h5"
             noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
+            component={Link}
+            to="/"
             sx={{
               mr: 2,
               display: { xs: "flex", md: "none" },
@@ -125,14 +134,22 @@ function ResponsiveAppBar() {
               sx={{ my: 2, color: "white", display: "flex" }}
             >
               <MenuItem onClick={handleCloseNavMenu}>
-                <Typography textAlign="center">
-                  <Link to="/">Home</Link>
-                </Typography>
+                <MuiLink
+                  component={Link}
+                  to="/"
+                  sx={{ color: "black", textDecoration: "none" }}
+                >
+                  Home
+                </MuiLink>
               </MenuItem>
               <MenuItem onClick={handleCloseNavMenu}>
-                <Typography textAlign="center">
-                  <Link to="/favourite">Favourite</Link>
-                </Typography>
+                <MuiLink
+                  component={Link}
+                  to="/favourite"
+                  sx={{ color: "black", textDecoration: "none" }}
+                >
+                  Favourite
+                </MuiLink>
               </MenuItem>
             </Button>
           </Box>
@@ -161,7 +178,12 @@ function ResponsiveAppBar() {
             >
               {settings.map((setting) => (
                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+                  <MuiLink
+                    component={Link}
+                    sx={{ textAlign: "center", textDecoration: "none" }}
+                  >
+                    {setting}
+                  </MuiLink>
                 </MenuItem>
               ))}
             </Menu>
