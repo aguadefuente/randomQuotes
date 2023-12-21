@@ -1,5 +1,4 @@
 import { Box, Typography } from "@mui/material";
-import Liked from "./Liked";
 
 const Favourite = ({ data }) => {
   const localStorageData = JSON.parse(localStorage.getItem("AllLiked"));
@@ -7,12 +6,31 @@ const Favourite = ({ data }) => {
 
   return (
     <>
-      <Box sx={{ height: "80vh", marginTop: 10, color: "black" }}>
-        <Typography variant="h3" component="h1">
+      <Box
+        sx={{
+          height: "80vh",
+          marginTop: 10,
+          color: "black",
+        }}
+      >
+        <Typography variant="h3" component="h1" sx={{ textAlign: "center" }}>
           My favourite quotes
         </Typography>
         {data && (
-          <ul>
+          <Box
+            component="ul"
+            sx={{
+              listStyle: "none",
+              "& li:nth-child(even)": {
+                backgroundColor: "lightblue",
+                width: "fit-content",
+              },
+            }}
+          >
+            {" "}
+            {/*con el componente <Box/> es más sencillo stilizar.
+            Si usáramos el <ul/> tag al no ser un mui component sino un jsx component se usa style y no sx            
+            además no podemos usar el :nth-child() css selector*/}
             {localStorageData.map((item) => {
               return (
                 <>
@@ -22,7 +40,7 @@ const Favourite = ({ data }) => {
                 </>
               );
             })}
-          </ul>
+          </Box>
         )}
       </Box>
     </>
