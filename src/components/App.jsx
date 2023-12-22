@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 import ResponsiveAppBar from "./Appbar.jsx";
@@ -6,6 +6,8 @@ import Quote from "./Quote.jsx";
 import Copyright from "./Footer.jsx";
 import { Container } from "@mui/material";
 import Favourite from "./Favourite.jsx";
+import Login from "./Login.jsx";
+import Profile from "./Profile.jsx";
 
 function App() {
   const [fetchQuote, setfetchQuote] = useState(null);
@@ -34,23 +36,31 @@ function App() {
 
   return (
     <>
-      <Router>
+      <BrowserRouter>
         <ResponsiveAppBar />
-        <Switch>
-          <Route exact path="/">
-            <Container>
-              <Quote data={fetchQuote} index={index} handleQ={handleQuote} />
-            </Container>
-          </Route>
+        <Routes>
+          <Route path="/login" element={<Login />}></Route>
+          <Route path="/profile" element={<Profile />}></Route>
+          <Route
+            path="/"
+            element={
+              <Container>
+                <Quote data={fetchQuote} index={index} handleQ={handleQuote} />
+              </Container>
+            }
+          />
+          <Route
+            path="/favourite"
+            element={
+              <Container>
+                <Favourite data={fetchQuote} />
+              </Container>
+            }
+          ></Route>
+        </Routes>
 
-          <Route path="/favourite">
-            <Container>
-              <Favourite data={fetchQuote} />
-            </Container>
-          </Route>
-        </Switch>
         <Copyright />
-      </Router>
+      </BrowserRouter>
     </>
   );
 }

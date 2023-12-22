@@ -1,13 +1,13 @@
 import { Typography } from "@mui/material";
 
-const Login = () => {
+const Profile = () => {
   return (
     <>
       <Typography sx={{ textAlign: "center" }} component="h1">
-        LOGIN
+        PROFILE
       </Typography>
     </>
   );
 };
 
-export default Login;
+export default Profile;

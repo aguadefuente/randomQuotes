@@ -181,6 +181,7 @@ function ResponsiveAppBar() {
                   <MuiLink
                     component={Link}
                     sx={{ textAlign: "center", textDecoration: "none" }}
+                    to={setting.includes("Logout") ? "/login" : "/profile"}
                   >
                     {setting}
                   </MuiLink>
