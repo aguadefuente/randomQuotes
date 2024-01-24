@@ -2,12 +2,12 @@
 TAREAS PENDIENTES
 - Hacer que no se repitan las quotes cuando me haga el random
 - Cuando haya mostrado todas las quotes que me salga un cartel "esas fueron todas las quotes" y un botón "restart"
-- agregar un corazoncito para poner like or dislike y 
--  usar LocalStorage() - estudiar como es - para agregarlas a la page Favourites
-- agregar los links router para el menu (home y favourites (aquí estén las quotes favoritas todas juntas como tarjetitas))
-- agregar carpeta pages para Home and Favourites
+- agregar un corazoncito para poner like or dislike DONE
+- usar LocalStorage() - estudiar como es - para agregarlas a la page Favourites DONE
 - agregarle la fecha a la aplicación con el componente del MUI
 - Ver el tamaño de la Card mediaquery (breakpoints) - estudiar
+- codear login/logout con LocalStorage
+- ver el tema del layout de react-router para que en el login no aparezca header/footer
 
 APUNTES:
 MATERIAL UI https://mui.com/material-ui/getting-started/installation/
