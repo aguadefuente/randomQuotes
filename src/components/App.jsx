@@ -1,13 +1,20 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+//import { BrowserRouter, Route, Routes } from "react-router-dom";
+import {
+  createBrowserRouter,
+  Route,
+  createRoutesFromElements,
+  RouterProvider,
+} from "react-router-dom";
+
 import { useEffect, useState } from "react";
 
-import ResponsiveAppBar from "./Appbar.jsx";
 import Quote from "./Quote.jsx";
-import Copyright from "./Footer.jsx";
+
 import { Container } from "@mui/material";
 import Favourite from "./Favourite.jsx";
 import Login from "./Login.jsx";
 import Profile from "./Profile.jsx";
+import RootLayout from "./RootLayout.jsx";
 
 function App() {
   const [fetchQuote, setfetchQuote] = useState(null);
@@ -34,15 +41,13 @@ function App() {
     fetchQuote && setIndex(Math.floor(Math.random() * fetchQuote.length));
   }
 
-  return (
-    <>
-      <BrowserRouter>
-        <ResponsiveAppBar />
-        <Routes>
-          <Route path="/login" element={<Login />}></Route>
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <>
+        <Route path="/" element={<RootLayout />}>
           <Route path="/profile" element={<Profile />}></Route>
           <Route
-            path="/"
+            index
             element={
               <Container>
                 <Quote data={fetchQuote} index={index} handleQ={handleQuote} />
@@ -57,12 +62,13 @@ function App() {
               </Container>
             }
           ></Route>
-        </Routes>
-
-        <Copyright />
-      </BrowserRouter>
-    </>
+        </Route>
+        <Route path="/login" element={<Login />}></Route>
+      </>
+    )
   );
+
+  return <RouterProvider router={router} />;
 }
 
 export default App;
